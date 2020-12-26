@@ -3,12 +3,16 @@ import sys
 
 args = sys.argv
 
+if len(args) == 1 :
+    print("正の整数を入力してください")
+    sys.exit()
+
 # args を整数型に変換
 n = int(args[1])
 
 # n が正の値でなければプログラムを終了
-if n <= 0:
-    print(my_msg)
+if n <= 0 :
+    print("正の整数を入力してください")
     sys.exit()
 
 def factorize(n):
