@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # coding: UTF-8
-# version 0.01
+# version 0.02
 import sys
 import datetime
 args = sys.argv
@@ -11,5 +11,5 @@ k = [line for line in lines_strip if args[-2] in line]
 kk = k[-1][1:11]
 t1 = ddn=datetime.date.fromisoformat(kk)
 ddn = datetime.date.today()
-kkk = ddn - t1
-print("{}日前です".format(kkk.days))
+print("{}日前です".format((ddn - t1).days))
+print(k[-1])
