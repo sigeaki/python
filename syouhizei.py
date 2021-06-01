@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 # coding: UTF-8
-# version 0.01
+# version 0.02
 a = input("price? ")
 r = [int(int(a) * 1.08)]
 while True :
     a = input("price? ")
-    if a == '=' :
+    if a == '' :
         break
     b = int(int(a) * 1.08)
     r.append(b)
-print(r,sum(r))
+print(f'price: {r} Total: {sum(r):,}')
