@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # coding: UTF-8
-# version 0.01
+# version 0.03
 import re
 import sys
 import datetime

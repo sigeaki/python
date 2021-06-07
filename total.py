@@ -5,4 +5,4 @@ r = []
 while (a := input("price? ")) != '':
     b = int(a)
     r.append(b)
-print(f'price: {r} Total: {sum(r):,} TaxTotal: {int(sum(r) * 1.08):,}')
+print(f'price: {r} Total: {sum(r):,}')
