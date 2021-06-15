@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+# coding: UTF-8
+# version 0.02
+
 # sysモジュールをインポート
 import sys
 import datetime
@@ -33,4 +37,9 @@ if len(x) == 2:
     print(f'{x[1]}は素数です')
 else:
     y = sum(x[:-1])
-    print(f'{x[-1]}は合成数です 約数は{x[:-1]}です 約数の合計は{y}です')
+    if n == y:
+        print(f'{x[-1]}は完全数です')
+    elif n  > y:
+        print(f'{x[-1]}は不足数です 約数は{x[:-1]}です 約数の合計は{y}です')
+    elif n  < y:
+        print(f'{x[-1]}は過剰数です 約数は{x[:-1]}です 約数の合計は{y}です')
