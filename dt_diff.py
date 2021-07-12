@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # coding: UTF-8
-# version 0.01
+# version 0.02
 from datetime import date
 from monthdelta import monthmod
 dt = input("Date?: ")
@@ -10,7 +10,7 @@ t2 = date(y,m,d)
 dt_dif = t1 - t2
 mmod_1 = monthmod(t2,t1)
 mmod_2 = monthmod(t1,t2)
-print("{}日前です".format((dt_dif).days))
+print(f'{dt_dif.days}日前です')
 if 1 <= mmod_1[0].months < 12:
     print(f'{mmod_1[0].months}月 {mmod_2[1].days}日前です。')
 elif mmod_1[0].months >= 12:
