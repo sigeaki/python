@@ -9,11 +9,11 @@ t1 = date.today()
 t2 = date(y,m,d)
 dt_dif = t1 - t2
 mmod = monthmod(t2,t1)
-print(f'誕生日は{dt_dif.days}日前です')
+print(f'{dt_dif.days}日経過')
 if 1 <= mmod[0].months < 12:
-    print(f'{mmod[0].months}月 {mmod[1].days}日前です。')
+    print(f'{mmod[0].months}月 {mmod[1].days}日です。')
 elif mmod[0].months >= 12:
     y,m = divmod(mmod[0].months,12)
-    print(f'誕生日は{y}年 {m}月 {mmod[1].days}日前です。')
+    print(f'{y}歳 {m}月 {mmod[1].days}日です。')
 else:
-    print(f'{mmod[1].days}日前です。')
+    print(f'{mmod[1].days}日です。')
