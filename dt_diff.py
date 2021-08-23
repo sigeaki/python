@@ -1,20 +1,26 @@
 #!/usr/bin/env python3
 # coding: UTF-8
-# version 0.02
+# version 0.03
 from datetime import date
 from monthdelta import monthmod
-dt = input("Date?: ")
-y, m, d = int(dt[:4]),int(dt[4:6]),int(dt[-2:])
-t1 = date.today()
-t2 = date(y,m,d)
-dt_dif = t1 - t2
-mmod_1 = monthmod(t2,t1)
-mmod_2 = monthmod(t1,t2)
-print(f'{dt_dif.days}日前です')
+dt1 = input("Start Date?: ")
+dt2 = input("End Date?: ")
+def ymd(arg):
+    y, m, d = int(arg[:4]),int(arg[4:6]),int(arg[-2:])
+    a = date(y, m, d)
+    return a
+t1 = ymd(dt1)
+t2 = ymd(dt2)
+dt_dif = abs(t1 - t2)
+if t2 < t1:
+    mmod_1 = monthmod(t2,t1)
+else:
+    mmod_1 = monthmod(t1,t2)
+print(f'{dt_dif.days}日です')
 if 1 <= mmod_1[0].months < 12:
-    print(f'{mmod_1[0].months}月 {mmod_2[1].days}日前です。')
+    print(f'{mmod_1[0].months}月 {mmod_1[1].days}日です。')
 elif mmod_1[0].months >= 12:
     y,m = divmod(mmod_1[0].months,12)
-    print(f'{y}年 {m}月 {mmod_2[1].days}日前です。')
+    print(f'{y}年 {m}月 {mmod_1[1].days}日です。')
 else:
-    print(f'{mmod_1[1].days}日前です。')
+    print(f'{mmod_1[1].days}日です。')
