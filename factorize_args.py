@@ -1,5 +1,6 @@
 # sysモジュールをインポート
 import sys
+from collections import Counter
 
 args = sys.argv
 
@@ -27,7 +28,8 @@ def factorize(n):
         fct.append(n)
     return fct
 
-x = factorize(n)
+r = Counter(factorize(n))
+x = sorted(r.items())
 
 if len(x) == 1:
     print("素数です",x)
