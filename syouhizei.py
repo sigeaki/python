@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 # coding: UTF-8
-# version 0.06
-zeiritu = input("zeiritu? ")
-if zeiritu == '8':
-    z = 8 
-elif zeiritu == '10':
-    z = 10
-else:
-    z = 0
+# version 0.07
+def zeiritu(a):
+    if a.lower() == 'k':
+       return 8
+    elif a.lower() == 'n':
+       return 10
+    else:
+       return 0
 def keisan(x):
     return 1 + x / 100
+z = zeiritu(input("zeiritu? "))
 r = []
 a = input("price?: ")
 while a != '':
