@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# coding: UTF-8
+# version 0.02
 # sysモジュールをインポート
 import sys
 from collections import Counter
@@ -30,8 +33,15 @@ def factorize(n):
 
 r = Counter(factorize(n))
 x = sorted(r.items())
+j = []
 
 if len(x) == 1:
-    print("素数です",x)
+    print("素数です",x[0][0])
 else:
-    print("合成数です",x)
+    for i in x:
+        if i[1] == 1:
+            y = i[0]
+            j.append(y)
+        else:
+            j.append(i)
+    print("合成数です",j)
