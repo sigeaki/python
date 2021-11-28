@@ -18,4 +18,5 @@ while a != '':
     a = input("price?: ")
 if z == 0:
     print(f'price: {r} Total: {sum(r):,}')
-print(f'price: {r} Total: {sum(r):,} TaxTotal: {int(sum(r) * keisan(z)):,}')
+else:
+    print(f'price: {r} Total: {sum(r):,} TaxTotal: {int(sum(r) * keisan(z)):,}')
