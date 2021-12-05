@@ -1,16 +1,19 @@
 #!/usr/bin/env python3
 # coding: UTF-8
-# version 0.03
+# version 0.04
 from datetime import date
 from monthdelta import monthmod
-dt1 = input("Start Date?: ")
-dt2 = input("End Date?: ")
+dt1 = input("開始日は?: ")
+dt2 = input("終了日は?: ")
 def ymd(arg):
     y, m, d = int(arg[:4]),int(arg[4:6]),int(arg[-2:])
     a = date(y, m, d)
     return a
 t1 = ymd(dt1)
-t2 = ymd(dt2)
+if dt2 == "":
+    t2 = date.today()
+else:
+    t2 = ymd(dt2)
 dt_dif = abs(t1 - t2)
 if t2 < t1:
     mmod_1 = monthmod(t2,t1)
