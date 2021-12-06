@@ -3,13 +3,17 @@
 # version 0.07
 def zeiritu(a):
     if a.lower() == 'k':
-       return 8
+        return 8
     elif a.lower() == 'n':
-       return 10
+        return 10
     else:
-       return 0
+        return 0
+
+
 def keisan(x):
     return 1 + x / 100
+
+
 z = zeiritu(input("zeiritu? "))
 r = []
 a = input("price?: ")
