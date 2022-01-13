@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # coding: UTF-8
-# version 0.06
+# version 0.07
 import sys
 import datetime
 from monthdelta import monthmod
@@ -28,7 +28,7 @@ if t1 == ddn:
         y, m = divmod(mmod1[0].months, 12)
         print(f'前回は今日から{(t1 - t2).days}日 {y:2}年{m:2}月{mmod1[1].days:2}日前です。')
     else:
-        print(f'前回は{t2} 前回の{(t1 - t2).days}日前です')
+        print(f'前回は{t2} 今日から{(t1 - t2).days}日前です')
     if 1 <= mmod3[0].months < 12:
         print(f'前々回は{t3} 前回の{(t2 - t3).days}日 {mmod3[0].months:2}月{mmod3[1].days:2}日前です。')
     elif mmod3[0].months >= 12:
