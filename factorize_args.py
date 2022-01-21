@@ -35,7 +35,7 @@ r = Counter(factorize(n))
 x = sorted(r.items())
 j = []
 
-if len(x) == 1:
+if len(x) == 1 and x[0][1] == 1:
     print("素数です",x[0][0])
 else:
     for i in x:
