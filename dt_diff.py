@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # coding: UTF-8
-# version 0.04
+# version 0.05
 from datetime import date
 from monthdelta import monthmod
 dt1 = input("開始日は?: ")
@@ -9,7 +9,10 @@ def ymd(arg):
     y, m, d = int(arg[:4]),int(arg[4:6]),int(arg[-2:])
     a = date(y, m, d)
     return a
-t1 = ymd(dt1)
+if dt1 == '':
+    t1 = date.today()
+else:
+    t1 = ymd(dt1)
 if dt2 == "":
     t2 = date.today()
 else:
