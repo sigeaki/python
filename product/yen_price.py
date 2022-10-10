@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # coding: UTF-8
-# version 0.04
+# version 0.01
 import requests
 from bs4 import BeautifulSoup
 import datetime
@@ -20,7 +20,7 @@ for i in range(len(url_list)):
     soup = BeautifulSoup(r.text,"html.parser");
     yen_price.append(soup.find("span",class_=url_list[i][1]).text)
 hd = os.path.expanduser("~")
-with open(hd + '/yen_price.csv', 'a', newline='') as f_object:  
+with open(hd + '/yen_price.csv', 'a', newline='') as f_object:
     writer_object = writer(f_object)
-    writer_object.writerow(yen_price)  
+    writer_object.writerow(yen_price)
     f_object.close()
