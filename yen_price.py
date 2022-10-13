@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 # coding: UTF-8
-# version 0.02
+# version 0.03
 import requests
 from bs4 import BeautifulSoup
 import datetime
 from csv import writer
 import os
 #現在時刻を取得
-# t_delta = datetime.timedelta(hours=9)  # 9時間
-# JST = datetime.timezone(t_delta, 'JST')  # UTCから9時間差の「JST」タイムゾーン
 now = datetime.datetime.now()
-now_day = "{0.year}-{0.month:2}-{0.day:2}".format(now)
-now_time = "{0.hour:2}:".format(now) + now.strftime("%M")
+# now_day = "{0.year}-{0.month:2}-{0.day:2}".format(now)
+now_day = now.strftime("%F")
+# now_time = "{0.hour:2}:".format(now) + now.strftime("%M")
+now_time = now.strftime("%H:%M")
 #米ドル/円サイトからデータを取得
 url_list = [["https://finance.yahoo.co.jp/quote/USDJPY=FX","IL99C0xX","米ドル/円: "],\
                     ["https://finance.yahoo.co.jp/quote/EURJPY=FX","_3Pvw_N8d","ユーロ/円: "]]
