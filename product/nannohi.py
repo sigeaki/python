@@ -14,5 +14,5 @@ today = soup.find("div", attrs={"id": "on_this_day"}).text
 hd = os.path.expanduser("~")
 output_file = hd + "/output.txt"
 # print(output_file)
-with open(output_file, 'a+') as f:
+with open(output_file, 'w+') as f:
     f.write(today)
