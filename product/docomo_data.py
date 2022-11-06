@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+# coding: UTF-8
 import datetime
 import calendar
 n=float(input("今日までのデータ使用量は？:"))
