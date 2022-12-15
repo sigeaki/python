@@ -41,5 +41,5 @@ for i in range(len(csv_list)):
     df = pd.DataFrame(m[1:],columns=m[0])
     df_sort = df.sort_values(by='勝率',ascending=False)
     df_sort.reset_index(drop=True, inplace=True) 
-    df_sort.to_csv(hd  + csv_list[i],index = False, float_format='%4.4f')
+    df_sort.to_csv(hd  + csv_list[i], encoding='utf-8_sig', index = False, float_format='%4.4f')
     # print(df_sort)
