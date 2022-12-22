@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # coding: utf-8
-# version 0.02
+# version 0.03
 
 import sys
 import pandas as pd
@@ -18,4 +18,6 @@ df_data.reset_index(drop=True, inplace=True)
 d  = pd.DataFrame(df_data)
 df_result = d.sort_values(by=s_jyoken,ascending=False)
 df_result.reset_index(drop=True, inplace=True)
+for i in '対局数', '勝数', '負数':
+    df_result[i] = df_result[i].apply(lambda x: '{0:,}'.format(x))
 print(df_result)
