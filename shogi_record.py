@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # coding: utf-8
-# version 0.02
+# version 0.03
 
 import requests
 from bs4 import BeautifulSoup
@@ -39,10 +39,12 @@ hd = os.path.expanduser("~") + '/'
 for i in range(len(csv_list)):
     s = get_response(url_list[i])
     m = get_table(s)
-    df = pd.DataFrame(m[1:],columns=m[0])
+    # df = pd.DataFrame(m[1:],columns=m[0])
+    df = pd.DataFrame(m[1:172],columns=m[0])
     for j in '勝数', '負数':
         df[j].replace('',np.nan,inplace=False)
-    df_sort = df.sort_values(by='勝率',ascending=False)
-    df_sort.reset_index(drop=True, inplace=True) 
-    df_sort.to_csv(hd  + csv_list[i], encoding='utf-8_sig', index = False, float_format='%4.4f')
+    # df_sort = df.sort_values(by='勝率',ascending=False)
+    # df_sort.reset_index(drop=True, inplace=True) 
+    # df_sort.to_csv(hd  + csv_list[i], encoding='utf-8_sig', index = False, float_format='%4.4f')
+    df.to_csv(hd  + csv_list[i], encoding='utf-8_sig', index = False, float_format='%4.4f')
     # print(df_sort)
