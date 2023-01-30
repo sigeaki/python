@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # coding: utf-8
+# version 0.02
 
 import requests
 from bs4 import BeautifulSoup
@@ -31,14 +32,16 @@ for tr in trs[1:]:  # 最初の行を飛ばしてfor文で回す
         r.append(td.text.strip())
     mat.append(r[:-1])
 print(dt_now.strftime('%Y-%m-%d'))
+l = dt_now.hour + 2
 
 m = []
 for k in mat[:-1]:
-    if k[1] == '24時':
-        break
+    if len(k) > 6 and k[1] == '24時':
+        k[1] = '0時'
+        m.append(k[1:])
     if len(k) > 6:
         m.append(k[1:])
     else:
         m.append(k)
-df = pd.DataFrame(data=m[1:], columns=m[0])
+df = pd.DataFrame(data=m[1:l], columns=m[0])
 print(df)
