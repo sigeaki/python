@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # coding: utf-8
-# version 0.02
+# version 0.03
 
 import requests
 from bs4 import BeautifulSoup
@@ -45,3 +45,4 @@ for k in mat[:-1]:
         m.append(k)
 df = pd.DataFrame(data=m[1:l], columns=m[0])
 print(df)
+df.to_csv(dt_now.strftime('%Y%m%d') + '.csv', index=False, encoding='utf_8_sig')
