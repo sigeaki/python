@@ -51,7 +51,7 @@ df_int = df.astype({'気温（℃）':'float64','風速（m/s）':'float64','日
 hd = os.path.expanduser("~")
 
 if df_int.iloc[0,0] == '23時':
-    df_int.to_csv(hd + dt_nor_str_1 + "weather.csv",index = False,encoding='utf_8_sig')
+    df_int.to_csv(hd + '/' + dt_nor_str_1 + "weather.csv",index = False,encoding='utf_8_sig')
 else:
     df_temp_avg = df_int['気温（℃）'].mean()
     df_wind_avg = df_int['風速（m/s）'].mean()
