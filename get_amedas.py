@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 # coding: utf-8
-# version 0.03
+# version 0.04
 
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 import datetime
 import csv
+import os
 
 dt_now = datetime.datetime.now()
 
@@ -31,7 +32,9 @@ for tr in trs[1:]:  # 最初の行を飛ばしてfor文で回す
     for td in tr.find_all('td'):  # tdタグを走査する
         r.append(td.text.strip())
     mat.append(r[:-1])
-print(dt_now.strftime('%Y-%m-%d'))
+dt_nor_str_1 = dt_now.strftime('%Y-%m-%d')
+dt_nor_str_2 = f'{dt_now.year}年{dt_now.month}月{dt_now.day}日'
+
 l = dt_now.hour + 2
 
 m = []
@@ -44,5 +47,16 @@ for k in mat[:-1]:
     else:
         m.append(k)
 df = pd.DataFrame(data=m[1:l], columns=m[0])
-print(df)
-df.to_csv(dt_now.strftime('%Y%m%d') + '.csv', index=False, encoding='utf_8_sig')
+df_int = df.astype({'気温（℃）':'float64','風速（m/s）':'float64','日照時間（分）':'int8'})
+hd = os.path.expanduser("~")
+
+if df_int.iloc[0,0] == '23時':
+    df_int.to_csv(hd + dt_nor_str_1 + "weather.csv",index = False,encoding='utf_8_sig')
+else:
+    df_temp_avg = df_int['気温（℃）'].mean()
+    df_wind_avg = df_int['風速（m/s）'].mean()
+    df_sun_total = df_int['日照時間（分）'].sum()
+    print(df_int)
+    print(f'{dt_nor_str_2}の平均気温は、{df_temp_avg:.1f}℃')
+    print(f'{dt_nor_str_2}の平均風速は、{df_wind_avg:.1f}（m/s）')
+    print(f'{dt_nor_str_2}の合計日照時間は、{df_sun_total:,}分')
