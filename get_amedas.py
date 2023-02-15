@@ -51,7 +51,7 @@ df_int = df.astype({'気温（℃）':'float64','降水量（mm）':'float64','�
 hd = os.path.expanduser("~")
 
 if df_int.iloc[0,0] == '23時':
-    df_int.iloc[::-1].to_csv(hd + '/' + dt_nor_str_2 + "weather.csv",index = False,encoding='utf_8_sig')
+    df_int.iloc[::-1].to_csv(hd + '/' + dt_nor_str_1 + "weather.csv",index = False,encoding='utf_8_sig')
 else:
     df_temp_avg = df_int['気温（℃）'].mean()
     df_rain_total = df_int['降水量（mm）'].sum()
