@@ -59,6 +59,6 @@ else:
     df_sun_total = df_int['日照時間（分）'].sum()
     print(df_int.iloc[::-1])
     print(f'{dt_nor_str_2}の平均気温は、{df_temp_avg:.1f}℃')
-    print(f'{dt_nor_str_2}の合計日照時間は、{df_rain_total:,}mm')
+    print(f'{dt_nor_str_2}の合計降水量は、{df_rain_total:,}mm')
     print(f'{dt_nor_str_2}の平均風速は、{df_wind_avg:.1f}（m/s）')
     print(f'{dt_nor_str_2}の合計日照時間は、{df_sun_total:,}分')
