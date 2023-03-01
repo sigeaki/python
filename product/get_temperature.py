@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # coding: utf-8
-# version 0.01
+# version 0.02
 
 import requests
 import json
@@ -67,7 +67,7 @@ row = dt_str_list[1:] + df_data1 + df_data2
 hd = os.path.expanduser("~")
 print(Path(hd + "/" + dt_str_list[0] + 'temp.csv').exists())
 #print(fl) 
-if not Path(dt_str_list[0] + 'weather.csv').exists():
+if not Path(hd + "/"  + dt_str_list[0] + 'weather.csv').exists():
     with open(hd + "/" + dt_str_list[0] + 'temp.csv', 'w', newline='', encoding='utf_8_sig') as f:
         writer = csv.writer(f)
         writer.writerow(fields)
