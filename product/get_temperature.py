@@ -65,7 +65,8 @@ row = dt_str_list[1:] + df_data1 + df_data2
 # print(fields)
 # print(row)
 hd = os.path.expanduser("~")
-files = hd + "/" + dt_str_list[0] + 'temp.csv'
+files = hd + "/public/howm/weather/" + dt_str_list[0] + 'temp.csv'
+# files = hd + "/" + dt_str_list[0] + 'temp.csv'
 # print(Path(hd + "/" + dt_str_list[0] + 'temp.csv').exists())
 #print(fl) 
 if not Path(files).exists():
