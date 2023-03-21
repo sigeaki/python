@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # coding: utf-8
-# version 0.01
+# version 0.02
 
 import requests
 import json
@@ -10,6 +10,18 @@ import datetime
 #現在時刻を取得
 now = datetime.datetime.now()
 
+# functions
+def get_rdate():
+  # date time now
+    dt_now = datetime.datetime.now()
+    gdate = dt_now + datetime.timedelta(minutes=-12)  # 現在時刻から12分引く
+    gdate = gdate.strftime('%Y%m%d%H%M')              # 時刻を表す文字列に変換
+    return gdate[0:11] + "000"                        # 分の1の位と秒を0に
+
+get_dt = get_rdate()
+jdata = f"https://www.jma.go.jp/bosai/amedas/data/map/{get_dt}.json"
+df = requests.get(jdata).json()
+temp_out = df['14136']['temp'][0]
 # Please get your access token via switchbot app
 header = {"Authorization": "ac13c69cd464914b76303eb915ab1f6903c0ba825c89742a2650271b9c825685b2be3552afbc3363719182d7a8b9c1d2"}
 
@@ -26,7 +38,8 @@ response = requests.get(url, headers=header)
 res=json.loads(response.text)
 
 print(now.strftime('%Y-%m-%d %H:%M'))
-temp = res['body']['temperature']
+temp_in = res['body']['temperature']
 humi = res['body']['humidity']
-print(f'気温は{temp}℃')
+print(f'気温は{temp_out}℃')
+print(f'室温は{temp_in}℃')
 print(f'湿度は{humi}%')
