@@ -40,7 +40,7 @@ for i in range(len(csv_list)):
     s = get_response(url_list[i])
     m = get_table(s)
     # df = pd.DataFrame(m[1:],columns=m[0])
-    df = pd.DataFrame(m[1:171],columns=m[0])
+    df = pd.DataFrame(m[1:],columns=m[0])
     for j in '勝数', '負数':
         df[j].replace('',np.nan,inplace=False)
     # df_sort = df.sort_values(by='勝率',ascending=False)
