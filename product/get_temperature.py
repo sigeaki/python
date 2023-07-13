@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # coding: utf-8
-# version 0.04
+# version 0.05
 
 import requests
 import json
@@ -36,7 +36,8 @@ dt_str_list = dt_str.split(' ')
 
 df = requests.get(jdata).json()
 #print(df['14136'])
-fields = ["時間", "気温", '日照時間(1h)', '降水量(ih)', "風向", "風速", "室温", "湿度"]
+# fields = ["時間", "気温", '日照時間(1h)', '降水量(ih)', "風向", "風速", "室温", "湿度"]
+fields = ["時間", "気温", '日照時間(1h)', '降水量(ih)', "風向", "風速", "自宅外気温", "自宅外湿度", "室温", "湿度"]
 df_data1 = [df['14136']['temp'][0], df['14136']['sun1h'][0] * 60, df['14136']['precipitation1h'][0], wd[df['14136']['windDirection'][0]],  df['14136']['wind'][0]]
 
 #現在時刻を取得
@@ -52,21 +53,31 @@ response = requests.get("https://api.switch-bot.com/v1.0/devices", headers=heade
 devices  = json.loads(response.text)
 
 # Get deviceId for hygrometer of "your hygrometer device name" in all device information 
-device_id = [device['deviceId'] for device in devices['body']['deviceList'] if "温湿度計 73" in device['deviceName']]
+device_id_list = [[device['deviceId'] for device in devices['body']['deviceList'] if "防水温湿度計 D8" in device['deviceName']],\
+                  [device['deviceId'] for device in devices['body']['deviceList'] if "温湿度計 73" in device['deviceName']]]
+# device_id = [device['deviceId'] for device in devices['body']['deviceList'] if "温湿度計 73" in device['deviceName']]
 
 # call hygrometer state via switchbot api
-url = "https://api.switch-bot.com/v1.0/devices/" + device_id[0] + '/status'
-response = requests.get(url, headers=header)
-res=json.loads(response.text)
+# url = "https://api.switch-bot.com/v1.0/devices/" + device_id[0] + '/status'
+# response = requests.get(url, headers=header)
+# res=json.loads(response.text)
 
 #fields = ["年月日", "時間", "気温", "湿度"]
-df_data2 = [res['body']['temperature'], res['body']['humidity']]
+df_data2 = []
+for i in range(2):
+    url = "https://api.switch-bot.com/v1.0/devices/" + device_id_list[i][0] + '/status'
+    response = requests.get(url, headers=header)
+    res=json.loads(response.text)
+    temp, hum = res['body']['temperature'], res['body']['humidity']
+    df_data2.append(temp)
+    df_data2.append(hum)
+# df_data2 = [res['body']['temperature'], res['body']['humidity']]
 row = dt_str_list[1:] + df_data1 + df_data2
 # print(fields)
 # print(row)
 hd = os.path.expanduser("~")
-files = hd + "/public/howm/weather/" + dt_str_list[0] + 'temp.csv'
-# files = hd + "/" + dt_str_list[0] + 'temp.csv'
+# files = hd + "/public/howm/weather/" + dt_str_list[0] + 'temp.csv'
+files = hd + "/" + dt_str_list[0] + 'temp.csv'
 # print(Path(hd + "/" + dt_str_list[0] + 'temp.csv').exists())
 #print(fl) 
 if not Path(files).exists():
@@ -78,4 +89,3 @@ else:
     with open(files, 'a', newline='', encoding='utf_8_sig') as f:
         writer = csv.writer(f)
         writer.writerow(row)
-
