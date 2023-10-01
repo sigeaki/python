@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-# coding: UTF-8
-# version 0.03
+#"_FxPriceBoardMain__price_1hfca_33" coding: UTF-8
+# version 0.04
 import requests
 from bs4 import BeautifulSoup
 import datetime
@@ -13,8 +13,8 @@ now_day = now.strftime("%F")
 # now_time = "{0.hour:2}:".format(now) + now.strftime("%M")
 now_time = now.strftime("%H:%M")
 #米ドル/円サイトからデータを取得
-url_list = [["https://finance.yahoo.co.jp/quote/USDJPY=FX","IL99C0xX","米ドル/円: "],\
-                    ["https://finance.yahoo.co.jp/quote/EURJPY=FX","_3Pvw_N8d","ユーロ/円: "]]
+url_list = [["https://finance.yahoo.co.jp/quote/USDJPY=FX","_FxPriceBoardMain__price_1w4it_33","米ドル/円: "],\
+                    ["https://finance.yahoo.co.jp/quote/EURJPY=FX","_FxPriceBoardMain__price_1w4it_33","ユーロ/円: "]]
 yen_price = [now_day,now_time]
 for i in range(len(url_list)):
     r = requests.get(url_list[i][0])
