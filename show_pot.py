@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 # coding: utf-8
-# version 0.01
+# version 0.02
 
 import requests
 import json
 import datetime
+import pandas as pd
 
 # wind direction
 wd = { 0:"-", 1:"北北東", 2:"北東", 3:"東北東", 4:"東", 5:"東南東", 6:"南東", 7:"南南東", 8:"南", 9:"南南西", 10:"南西", 11:"西南西", 12:"西", 13:"西北西", 14:"北西", 15:"北北西", 16:"北" } 
@@ -56,7 +57,6 @@ for i in range(2):
     df_data2.append(hum)
 
 row = dt_str_list[1:] + df_data1 + df_data2
-print(dt_str_list[0])
-print(fields)
-print(row)
-
+df = pd.DataFrame(row, index=fields)
+df.columns = [dt_str_list[0]]
+print(df)
