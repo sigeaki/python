@@ -32,8 +32,9 @@ def get_table(soup):
         mat.append(r)
     return mat
 
-url_list = ["https://www.shogi.or.jp/game/record/all.html","https://www.shogi.or.jp/game/record/year_result.html"]
-csv_list = ["all_result.csv","2023_result.csv"]
+url_list = ["https://www.shogi.or.jp/game/record/all.html","https://www.shogi.or.jp/game/record/archives/2024_result.html"]
+# url_list = ["https://www.shogi.or.jp/game/record/all.html","https://www.shogi.or.jp/game/record/year_result.html"]
+csv_list = ["all_result.csv","2024_result.csv"]
 hd = os.path.expanduser("~") + '/'
 
 for i in range(len(csv_list)):
