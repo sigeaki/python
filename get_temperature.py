@@ -14,6 +14,7 @@ import pandas as pd
 import os
 import csv
 from pathlib import Path
+import get_env
 
 args = sys.argv
 # wind direction
@@ -56,9 +57,9 @@ def make_apiheader():
     # Declare empty header dictionary
     apiHeader = {}
     # open token
-    token = 'ac13c69cd464914b76303eb915ab1f6903c0ba825c89742a2650271b9c825685b2be3552afbc3363719182d7a8b9c1d2' # copy and paste from the SwitchBot app V6.14 or later
+    token = get_env.get_env('TOKEN')
     # secret key
-    secret = '4a8fe0d45de9d100464d7ad5708903f6' # copy and paste from the SwitchBot app V6.14 or later
+    secret = get_env.get_env('SECRET')
     nonce = uuid.uuid4()
     t = int(round(time.time() * 1000))
     string_to_sign = '{}{}{}'.format(token, t, nonce)

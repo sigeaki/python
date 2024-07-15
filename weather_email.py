@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # coding: UTF-8
-# version 0.01
+# version 0.02
 
 import requests
 from bs4 import BeautifulSoup
@@ -9,6 +9,7 @@ import datetime
 import smtplib
 from email.mime.text import MIMEText
 from email.utils import formatdate
+import get_env
 
 now = datetime.datetime.now()
 tw = now + datetime.timedelta(days=1)
@@ -74,7 +75,7 @@ from_address = 'ssiiggeeaakkii@gmail.com'
 to_address = 'ssiiggeeaakkii@gmail.com'
 bcc = ''
 # 発行したアプリパスワード
-app_password = 'aoagzhrbvzrlhivd'
+app_password = get_env.get_env('GMAIL_API')
 subject = '天皇予報'
 m = GET_Weather()
 table_html = m.to_html(table_id="table",index=False)
