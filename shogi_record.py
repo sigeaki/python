@@ -44,7 +44,7 @@ for i in range(len(csv_list)):
     df = pd.DataFrame(m[1:],columns=m[0])
     for j in '勝数', '負数':
         df[j].replace('',np.nan,inplace=False)
-    df['勝率'].replace('----', np.nan, inplace=True)
+    df['勝率'] = df['勝率'].replace('----', np.nan)
     df = df.fillna(0)
     # df_sort = df.sort_values(by='勝率',ascending=False)
     # df_sort.reset_index(drop=True, inplace=True) 
