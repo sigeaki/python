@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 # coding: utf-8
-# version 0.07
+# version 0.08
 
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 import datetime
-# import csv
+import numpy as np
 # import os
 
 dt_now = datetime.datetime.now()
@@ -47,7 +47,11 @@ for k in mat[:-1]:
     else:
         m.append(k)
 df = pd.DataFrame(data=m[1:l], columns=m[0])
-df_int = df.astype({'気温（℃）':'float64','降水量（mm）':'float64','風速（m/s）':'float64','日照時間（分）':'int8'})
+try:
+    df_int = df.astype({'気温（℃）':'float64','降水量（mm）':'float64','風速（m/s）':'float64','日照時間（分）':'int8'})
+except:
+    df.replace('---', np.NaN, inplace=True)
+    df_int = df.astype({'気温（℃）':'float64','降水量（mm）':'float64','風速（m/s）':'float64','日照時間（分）':'int8'})
 # hd = os.path.expanduser("~")
 
 # if df_int.iloc[0,0] == '23時':
