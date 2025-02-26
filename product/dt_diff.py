@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # coding: UTF-8
 # version 0.05
-from datetime import date
+from datetime import datexx
 from monthdelta import monthmod
 dt1 = input("開始日は?: ")
 dt2 = input("終了日は?: ")
@@ -17,7 +17,7 @@ if dt2 == "":
     t2 = date.today()
 else:
     t2 = ymd(dt2)
-dt_dif = abs(t1 - t2)
+dt_dif = abs(t1 - t2 + 1)
 if t2 < t1:
     mmod_1 = monthmod(t2,t1)
 else:

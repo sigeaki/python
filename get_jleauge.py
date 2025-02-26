@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 #"_FxPriceBoardMain__price_1hfca_33" coding: UTF-8
-# version 0.02
+# version 0.03
 
 import csv
 import requests
 from bs4 import BeautifulSoup
 import re
+import os
 
 # URLの指定
 leage = 'j1', 'j2'
@@ -33,7 +34,11 @@ for j in leage:
         print(item)
     r = re.sub(r'\D','-',update_time).lstrip('-')
     rr = r[:10].rstrip('-')
-    csvFile = open(rr + j + ".csv", 'wt', newline='', encoding='utf_8_sig')
+    _tmp_file = rr + j + ".csv"
+    if os.path.isfile(_tmp_file):
+        print("ファイルが既に存在します")
+        continue
+    csvFile = open(_tmp_file, 'wt', newline='', encoding='utf_8_sig')
     writer = csv.writer(csvFile)
     for item in standing:
         writer.writerow(item)
