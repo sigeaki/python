@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # coding: utf-8
-# version 0.08
+# version 0.9
 
 import requests
 from bs4 import BeautifulSoup
@@ -51,7 +51,8 @@ try:
     df_int = df.astype({'気温（℃）':'float64','降水量（mm）':'float64','風速（m/s）':'float64','日照時間（分）':'int8'})
 except:
     df.replace('---', np.NaN, inplace=True)
-    df_int = df.astype({'気温（℃）':'float64','降水量（mm）':'float64','風速（m/s）':'float64','日照時間（分）':'int8'})
+    # df_int = df.astype({'気温（℃）':'float64','降水量（mm）':'float64','風速（m/s）':'float64','日照時間（分）':'int8'})
+    df_int = df.astype({'気温（℃）':'float64','降水量（mm）':'float64','風速（m/s）':'float64','日照時間（分）':'float64'})
 # hd = os.path.expanduser("~")
 
 # if df_int.iloc[0,0] == '23時':
