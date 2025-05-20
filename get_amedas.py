@@ -1,14 +1,12 @@
 #!/usr/bin/env python3
 # coding: utf-8
-# version 0.10
+# version 0.11
 
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 import datetime
 import numpy as np
-import matplotlib.pyplot as plt
-import japanize_matplotlib
 import sys
 
 args = sys.argv
@@ -72,5 +70,7 @@ print(f'{dt_nor_str_2}の合計降水量は、{df_rain_total:,}mm')
 print(f'{dt_nor_str_2}の平均風速は、{df_wind_avg:.1f}（m/s）')
 print(f'{dt_nor_str_2}の合計日照時間は、{df_sun_total:,}分')
 if len(args) > 1 and args[1] == "-g":
+    import matplotlib.pyplot as plt
+    import japanize_matplotlib
     df_int.plot(x='時刻', y=['気温（℃）','降水量（mm）','日照時間（分）','風速（m/s）'], title=dt_nor_str_2, marker="o", markersize=4, grid=True)
     plt.show()
