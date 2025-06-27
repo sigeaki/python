@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # coding: utf-8
-# version 0.12
+# version 0.13
 
 import pandas as pd
 import numpy as np
@@ -10,7 +10,7 @@ import sys
 args = sys.argv
 dt_now = datetime.datetime.now()
 dt_now_str_1 = f'{dt_now.year}年{dt_now.month}月{dt_now.day}日'
-t = int(dt_now.hour) + 1
+t = int(dt_now.hour)
 print(dt_now_str_1)
 
 response = pd.read_html('https://tenki.jp/amedas/1/2/14136.html', encoding='utf-8', index_col=1)
