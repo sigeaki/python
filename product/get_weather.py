@@ -24,7 +24,7 @@ def GET_Weather():
     tomorrow_weather = rs_wether[1].text.strip()
     # 最高気温を取得
     rs_hightemp = rs.findAll(class_='high-temp temp')
-    today_hightemp = rs_hightemp[0].text.strip()
+    today_hightemp = rs_hightemp[0].text.strip().replace('\n', '')
     tomorrow_hightemp = rs_hightemp[1].text.strip()
     # 最高気温差を取得
     rs_hightempdiff = rs.findAll(class_='high-temp tempdiff')
@@ -32,7 +32,7 @@ def GET_Weather():
     tomorrow_hightempdiff = rs_hightempdiff[1].text.strip()
     # 最低気温を取得
     rs_lowtemp = rs.findAll(class_='low-temp temp')
-    today_lowtemp = rs_lowtemp[0].text.strip()
+    today_lowtemp = rs_lowtemp[0].text.strip().replace('\n', '')
     tomorrow_lowtemp = rs_lowtemp[1].text.strip()
     # 最高気温差を取得
     rs_lowtempdiff = rs.findAll(class_='low-temp tempdiff')
