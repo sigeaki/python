@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # coding: utf-8
-# version 0.01
+# version 0.02
 
 import requests
 from bs4 import BeautifulSoup
@@ -45,4 +45,9 @@ for k in mat[:-1]:
     else:
         m.append(k)
 df = pd.DataFrame(data=m[1:l], columns=m[0])
+df_int = df.astype({'気温（℃）':'float64','降水量（mm）':'float64'})
+df_temp_avg = df_int['気温（℃）'].mean()
+df_rain_total = df_int['降水量（mm）'].sum()
 print(df)
+print(f'{dt_nor_str_2}の平均気温は、{df_temp_avg:.1f}℃')
+print(f'{dt_nor_str_2}の合計降水量は、{df_rain_total:,}mm')
