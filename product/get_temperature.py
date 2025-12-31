@@ -45,8 +45,15 @@ dt_str_list = dt_str.split(' ')
 
 df = requests.get(jdata).json()
 #print(df['14136'])
-fields = ["時間", "気温", '日照時間', '降水量', "風向", "風速", "自宅外気温", "自宅外湿度", "室温", "湿度"]
-df_data1 = [df['14136']['temp'][0], df['14136']['sun1h'][0] * 60, df['14136']['precipitation1h'][0], wd[df['14136']['windDirection'][0]],  df['14136']['wind'][0]]
+# fields = ["時間", "気温", '日照時間', '降水量', "風向", "風速", "自宅外気温", "自宅外湿度", "室温", "湿度"]
+try:
+    df_data1 = [df['14136']['temp'][0], df['14136']['sun1h'][0] * 60, df['14136']['precipitation1h'][0], wd[df['14136']['windDirection'][0]],  df['14136']['wind'][0]]
+    fields = ["時間", "気温", '日照時間', '降水量', "風向", "風速", "自宅外気温", "自宅外湿度", "室温", "湿度"]
+
+except:
+    df_data1 = [df['14136']['temp'][0], df['14136']['precipitation1h'][0], wd[df['14136']['windDirection'][0]],  df['14136']['wind'][0]]
+    fields = ["時間", "気温", "風速", "自宅外気温", "自宅外湿度", "室温", "湿度"]
+    fields = ["時間", "気温", '降水量', "風向", "風速", "自宅外気温", "自宅外湿度", "室温", "湿度"]
 
 #現在時刻を取得
 t_delta = datetime.timedelta(hours=9)  # 9時間
