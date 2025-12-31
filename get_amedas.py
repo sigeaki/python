@@ -20,11 +20,12 @@ try:
     df = df.astype({'気温(℃)':'float','降水量(mm)':'float32','風速(m/s)':'float32','日照時間(分)':'int8'})
 except:
     df.replace('---', np.nan, inplace=True)
-    df = df.astype({'気温(℃)':'float','降水量(mm)':'float32','風速(m/s)':'float32','日照時間(分)':'int8'})
-sun_total, rain_total = df['日照時間(分)'].sum(), df['降水量(mm)'].sum() 
+    df = df.astype({'気温(℃)':'float','降水量(mm)':'float32','風速(m/s)':'float32'})
+# sun_total, rain_total = df['日照時間(分)'].sum(), df['降水量(mm)'].sum() 
+rain_total = df['降水量(mm)'].sum() 
 print(df.describe()) # describe関数でとりあえず概要表示
 print(df)
-print(f'合計日照時間は、{sun_total:.0f}分')
+# print(f'合計日照時間は、{sun_total:.0f}分')
 print(f'合計降水量は、{rain_total:.1f}mm')
 if len(args) > 1 and args[1] == "-g":
     import matplotlib.pyplot as plt
